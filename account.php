@@ -32,7 +32,9 @@ foreach ($users as $login => $data) {
 
 <body class="min-vh-100">
     <main>
-        <div class="container m-5">Привет, <?= htmlspecialchars($currentUser['login']) ?></div>
+        <div class="container m-5">Привет, <?= htmlspecialchars($currentUser['login']) ?>
+            <a href="logout.php" class="btn btn-danger">Выйти</a>
+        </div>
     </main>
     <hr>
     <footer class="bg-body-tertiary text-center py-3">
