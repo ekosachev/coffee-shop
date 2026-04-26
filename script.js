@@ -112,6 +112,18 @@ const products = [
     )
 ]
 
+const loadLocalStorage = () => {
+    const savedCart = localStorage.getItem('cart')
+    if (savedCart) {
+        CartContents = JSON.parse(savedCart);
+        update_cart_display();
+    }
+}
+
+const updateLocalStorage = () => {
+    const cart = JSON.stringify(CartContents);
+    localStorage.setItem("cart", cart)
+}
 const products_container = document.getElementById("products_container")
 const col_width = 3;
 
@@ -180,7 +192,7 @@ function update_cart_display() {
         cartContainer.appendChild(productRow)
     }
 
-    if (Object.keys(CartContents).length != 0) {
+    if (Object.values(CartContents).filter((v) => { return v > 0 }).length != 0) {
         const totalRow = document.createElement('div')
         totalRow.classList = 'd-flex gap-2 justify-content-between'
         const totalLabel = document.createElement('p')
@@ -200,12 +212,14 @@ function update_cart_display() {
     } else {
         cartContainer.innerHTML = "Корзина пуста"
     }
+
 }
 
 const pay = () => {
     alert(`Успешно оплачено ${calculateTotal().toFixed(2)} у. е.`)
     CartContents = {}
     update_cart_display()
+    updateLocalStorage()
 }
 
 const calculateTotal = () => {
@@ -225,6 +239,7 @@ function add_to_cart(p_id) {
     CartContents[p_id] += 1
     alert(products[p_id].name + " добавлен в корзину")
     update_cart_display()
+    updateLocalStorage()
 }
 
 const removeFromCart = (p_id) => {
@@ -232,6 +247,7 @@ const removeFromCart = (p_id) => {
     if (CartContents[p_id] < 1) { return }
     CartContents[p_id] -= 1
     update_cart_display()
+    updateLocalStorage()
 }
 
 function build_checkbox_filter(container, dict, name) {
@@ -283,3 +299,4 @@ build_products(products_container, products)
 build_checkbox_filter(roastTypeContainer, RoastTypes, 'roast-type')
 build_checkbox_filter(roastDarknessContainer, RoastDarkness, 'roast-darkness')
 update_cart_display()
+loadLocalStorage()
