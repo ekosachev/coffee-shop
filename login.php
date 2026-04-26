@@ -1,5 +1,25 @@
-<!DOCTYPE html>
+<?php
+session_start();
 
+$users = require_once 'includes/users.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $login = trim($_POST['login'] ?? '');
+    $password = trim($_POST['password'] ?? '');
+
+    if (empty($login) || empty($password)) {
+        $error = "Заполните все поля";
+    } elseif (!isset($users[$login])) {
+        $error = "Неверный логин или пароль";
+    } elseif (password_verify($password, $users[$login]['password_hash'])) {
+        $_SESSION['user_id'] = $users[$login]['id'];
+        header('Location: account.php');
+        exit;
+    } else {
+        $error = "Неверный логин или пароль";
+    }
+}
+?>
 <html lang="ru">
 
 <head>
@@ -33,6 +53,9 @@
                                     <label for="inputPassword" class="form-label">Пароль</label>
                                     <input type="password" name="password" id="inputPassword" class="form-control">
                                 </div>
+                                <?php if (isset($error)): ?>
+                                    <div class="text-danger form-text"><?= htmlspecialchars($error) ?></div>
+                                <?php endif; ?>
                                 <button type="submit" class="btn btn-primary">Войти</button>
                             </form>
                         </div>
