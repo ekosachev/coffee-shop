@@ -50,7 +50,7 @@ const products = [
         эспрессо-смесей, потому что это очень стабильный кофе.
         `,
         "./img/sul_de_minas.png",
-        "./products/sul_de_minas.html"
+        "./products/sul_de_minas.php"
     ),
     new Product(
         "Эфиопия Иргачефф",
@@ -72,7 +72,7 @@ const products = [
         разновидностей кофе.
         `,
         "./img/irgacheff.png",
-        "./products/irgacheff.html",
+        "./products/irgacheff.php",
     ),
     new Product(
         "Бразилия Серрадо",
@@ -92,7 +92,7 @@ const products = [
         однородным и комплексным.
         `,
         "./img/serrado.png",
-        "./products/serrado.html",
+        "./products/serrado.php",
     ),
     new Product(
         "Колумбия Богота",
@@ -108,7 +108,7 @@ const products = [
         классический фруктовый профиль с сочной кислотностью во вкусе.
         `,
         "./img/bogota.png",
-        "./products/botota.html"
+        "./products/botota.php"
     )
 ]
 

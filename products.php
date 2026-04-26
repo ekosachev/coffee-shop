@@ -18,7 +18,7 @@
             <div class="container-fluid me-auto mb-2 mb-lg-0">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.html">Главная</a>
+                        <a class="nav-link" aria-current="page" href="index.php">Главная</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Каталог</a>
