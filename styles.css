@@ -1,0 +1,38 @@
+body {
+    background-color: rgb(255, 237, 212);
+}
+
+a.nav {
+    color: rgb(255, 100, 103);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: medium;
+}
+
+ul.nav {
+    list-style-type: none;
+}
+
+.subtitle {
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.desc {
+    color: rgb(12, 10, 9);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.info li {
+    font-size: 18px;
+    line-height: 28px;
+    font-style: italic;
+}
+
+.info {
+    list-style: circle;
+}
