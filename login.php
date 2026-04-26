@@ -2,6 +2,7 @@
 session_start();
 
 $users = require_once 'includes/users.php';
+require_once 'logger.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $login = trim($_POST['login'] ?? '');
@@ -11,12 +12,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Заполните все поля";
     } elseif (!isset($users[$login])) {
         $error = "Неверный логин или пароль";
+        writeAuthLog($login, 'FAIL_LOGIN');
     } elseif (password_verify($password, $users[$login]['password_hash'])) {
         $_SESSION['user_id'] = $users[$login]['id'];
+        $_SESSION['user_login'] = $login;
+        writeAuthLog($login, 'SUCCESS_LOGIN');
         header('Location: account.php');
         exit;
     } else {
         $error = "Неверный логин или пароль";
+        writeAuthLog($login, 'FAIL_LOGIN');
     }
 }
 ?>

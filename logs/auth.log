@@ -1,0 +1,6 @@
+2026-04-26 14:07:44 | ip=127.0.0.1 | login=admin | action=SUCCESS_LOGIN
+2026-04-26 14:08:21 | ip=127.0.0.1 | login=admin | action=LOGOUT
+2026-04-26 14:08:32 | ip=127.0.0.1 | login=user | action=SUCCESS_LOGIN
+2026-04-26 14:08:34 | ip=127.0.0.1 | login=user | action=LOGOUT
+2026-04-26 14:08:46 | ip=127.0.0.1 | login=notauser | action=FAIL_LOGIN
+2026-04-26 14:09:00 | ip=127.0.0.1 | login=admin | action=FAIL_LOGIN
